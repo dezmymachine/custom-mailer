@@ -2,30 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import googleicon from "../assets/google.png";
 import fbicon from "../assets/fbicon.svg";
-import chatmailicon from "../assets/chatmail.png";
 
 const SignUp = () => {
   return (
-    <div className="bg-white shadow-2xl rounded-xl mt-5 p-5 font-stix mx-auto">
-      <div className="flex items-center">
-        <span>
-          <img src={chatmailicon} className="h-24" alt="logo" />
-        </span>
-        <span className="font-bold text-2xl pb-5">Sign up</span>
-      </div>
-      <h3 className="font-semibold text-xl pt-4">
-        Hi, <span>&#128075;</span> welcome! to chatMail
+    <div className="bg-white font-stix  p-5 mx-auto sm:w-1/2 min-h-screen">
+      <h2 className="font-bold text-xl text-center">Sign Up</h2>
+      <h3 className="font-semibold text-xl text-center">
+        Hi, <span>&#128075;</span> welcome! to Chat Mail
       </h3>
-      <p className="pt-2">Please Create an Account below</p>
-
-      <div className="sign up options pt-2 flex items-center justify-center gap-2">
-        <button className="bg-white rounded border p-2 flex items-center gap-2 font-bold">
+      <div className="signup options pt-2 flex items-center gap-1 justify-center">
+        <button className="bg-white rounded border flex items-center font-semibold gap-1 p-2">
           <span>
             <img src={googleicon} alt="google-icon" className="h-8" />
           </span>
           Sign up with Google
         </button>
-        <button className="bg-white rounded border p-2 flex items-center gap-2 font-bold">
+        <button className="bg-white rounded border flex items-center gap-1 p-2 font-semibold">
           <span>
             <img src={fbicon} alt="google-icon" className="h-8" />
           </span>
@@ -71,12 +63,15 @@ const SignUp = () => {
           </button>
         </div>
       </form>
-      <div className="flex pt-2 gap-2">
-        <p className="text-slate-600">Already have an account?</p>
-        <Link to="/login" className="underline underline-offset-2 text-primary">
+      <p className="text-slate-600 text-center flex items-center justify-center gap-2 pt-3">
+        Already have an account?
+        <Link
+          to="/login"
+          className="underline underline-offset-2 text-primary text-center"
+        >
           Log in
         </Link>
-      </div>
+      </p>
     </div>
   );
 };
