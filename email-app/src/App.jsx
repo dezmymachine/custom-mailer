@@ -1,11 +1,27 @@
 import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/Root";
+import ErrorPage from "./error/ErrorPage";
+import Inbox from "./components/Inbox";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/inbox",
+        element: <Inbox />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <h3 className="text-center text-emerald-900 font-bold">
-        We are going to create an amazing app
-      </h3>
+      <RouterProvider router={router}></RouterProvider>
     </>
   );
 }
