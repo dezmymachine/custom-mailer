@@ -2,9 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#0466C8",
+      },
+    },
     fontFamily: {
-      stix: ["STIX Two Text", "serif"],
+      stix: ["Poppins", "serif"],
     },
   },
   plugins: [],

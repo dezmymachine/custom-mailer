@@ -5,7 +5,7 @@ const Root = () => {
   return (
     <>
       <div className="flex gap-2">
-        <div className="bg-black text-white font-bold p-2 w-1/2">Root</div>
+        <div className="">Root</div>
         <div>
           <Outlet />
         </div>
