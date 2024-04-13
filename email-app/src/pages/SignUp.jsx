@@ -1,32 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import googleicon from "../assets/google.png";
-import fbicon from "../assets/fbicon.svg";
 
 const SignUp = () => {
   return (
-    <div className="bg-white font-stix p-5 mx-auto min-h-screen sm:flex sm:items-center sm:justify-center">
-      <div className="w-full max-w-md rounded shadow-xl p-5">
+    <div className="bg-stone-100 font-stix p-5 mx-auto min-h-screen sm:flex sm:items-center sm:justify-center">
+      <div className="w-full max-w-md rounded shadow-2xl p-5">
         <h2 className="font-bold text-xl text-center">Sign Up</h2>
-        <h3 className="font-semibold text-xl text-center">
+        <h3 className="font-semibold text-xl text-center pt-3">
           Hi, <span>&#128075;</span> welcome! to Chat Mail
         </h3>
-        {/* <div className="signup-options pt-2 flex items-center gap-1 justify-center">
-          <button className="bg-white rounded border flex items-center font-semibold gap-1 p-2">
-            <span>
-              <img src={googleicon} alt="google-icon" className="h-8" />
-            </span>
-            Sign Up with Google
-          </button>
-          <button className="bg-white rounded border flex items-center gap-1 p-2 font-semibold">
-            <span>
-              <img src={fbicon} alt="google-icon" className="h-8" />
-            </span>
-            Sign Up with Facebook
-          </button>
-        </div> */}
 
-        {/* <p className="text-center text-slate-400 text-xl pt-4">-OR-</p> */}
         <form className="flex flex-col pt-4">
           <label htmlFor="fullname" className="text-slate-600 pt-2">
             Full Name
