@@ -3,7 +3,7 @@ import { User } from "../models/users.js";
 export const logIn = async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    const signIn = await User.create({
+    const signIn = await User.findOne({
       email,
       password,
     });
