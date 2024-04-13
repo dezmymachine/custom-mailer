@@ -6,11 +6,13 @@ import Inbox from "./components/Inbox";
 import Sent from "./components/Sent";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import ComposeEmail from "./components/ComposeEmail";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <SignUp />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/login",
@@ -19,7 +21,6 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Root />,
-    errorElement: <ErrorPage />,
     children: [
       {
         path: "/home/inbox",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/home/sent",
         element: <Sent />,
+      },
+      {
+        path: "/home/compose",
+        element: <ComposeEmail />,
       },
     ],
   },
