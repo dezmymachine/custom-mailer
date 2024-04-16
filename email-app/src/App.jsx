@@ -7,6 +7,7 @@ import Sent from "./components/Sent";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import ComposeEmail from "./components/ComposeEmail";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/home/compose",
         element: <ComposeEmail />,
+      },
+
+      {
+        path: "/home/profile",
+        element: <Profile />,
       },
     ],
   },

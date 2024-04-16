@@ -12,7 +12,7 @@ export default {
       },
     },
     fontFamily: {
-      stix: ["Poppins", "serif"],
+      stix: ["Jost", "serif"],
     },
   },
   plugins: [],
