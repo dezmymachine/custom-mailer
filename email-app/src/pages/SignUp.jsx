@@ -44,7 +44,7 @@ const SignUp = () => {
               type="submit"
               className="bg-primary text-white p-2 rounded w-1/2 font-bold"
             >
-              Sign Up
+              <Link to="/home">Sign Up</Link>
             </button>
           </div>
         </form>
