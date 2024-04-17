@@ -17,13 +17,13 @@ export const logIn = async (req, res, next) => {
 export const SignUp = async (req, res, next) => {
   const { firstName, lastName, username, email, password } = req.body;
   try {
-    const register = await User.create({
+    const register = await User.signup(
       firstName,
       lastName,
       email,
       username,
-      password,
-    });
+      password
+    );
     res.status(201).json(register);
   } catch (error) {
     next(error);
