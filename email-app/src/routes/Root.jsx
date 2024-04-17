@@ -20,37 +20,37 @@ const Root = () => {
           <img src={user} alt="user-icon" className="h-12" />
         </Link>
       </div>
-      <div className="createmail bg-white  p-2 shadow-sm flex items-center sm:gap-5">
+      <div className="createmail bg-white  p-2 shadow-sm flex items-center sm:gap-5 gap-2">
         <Link
-          className="create-box bg-primary text-white flex items-center gap-1 p-2 rounded"
+          className="create-box bg-primary text-white flex items-center gap-1 p-1 rounded"
           to="/home/compose"
         >
           <img src={mail} alt="mail-icon" className=" sm:h-12 h-8" />
-          <p className="font-semibold text-xl">Create Mail</p>
+          <p className="font-semibold sm:text-xl">New Mail</p>
         </Link>
 
         <p className="text-primary font-bold sm:text-2xl">
-          Welcome to ChatMail Service
+          Welcome to ChatMail
         </p>
       </div>
 
-      <div className="render-div flex gap-1">
-        <div className="sidebar">
-          <Link to="/home/inbox" className="flex">
+      <div className="render-div flex gap-2 mt-3 p-2">
+        <div className="sidebar px-3 border min-h-svh">
+          <Link to="/home/inbox" className="flex items-center p-2 gap-1 mt-2">
             <img src={inbox} className="w-8" />
-            <p>Inbox</p>
+            <p className="hidden sm:block">Inbox</p>
           </Link>
-          <Link to="/home/sent" className="flex">
-            <img src={sent} className="w-8" />
-            <p>Sent Items</p>
+          <Link to="/home/sent" className="flex items-center p-2 gap-1 mt-2">
+            <img src={sent} className="w-12" />
+            <p className="hidden sm:block">Sent</p>
           </Link>
-          <Link to="/home/compose" className="flex">
+          <Link to="/home/compose" className="flex items-center p-2 gap-1 mt-2">
             <img src={compose} className="w-8" />
-            <p>Compose</p>
+            <p className="hidden sm:block">Compose</p>
           </Link>
         </div>
 
-        <div className="outlet">
+        <div className="outlet w-full">
           <Outlet />
         </div>
       </div>
