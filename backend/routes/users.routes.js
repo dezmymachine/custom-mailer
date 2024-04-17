@@ -12,8 +12,8 @@ const router = Router();
 //create other routes
 router.post("/register", SignUp);
 router.post("/login", logIn);
-router.get("/", getusers);
-router.get("/:id", getUserById);
+router.get("/me", getUserById);
+router.get("/logout", getusers);
 
 //export router
 export default router;

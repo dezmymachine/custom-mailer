@@ -17,8 +17,8 @@ app.use(cors());
 app.use(express.json());
 
 //use routes
-app.use("/messages", messagesRoutes);
-app.use("/users", usersRoutes);
+app.use("/api/messages", messagesRoutes);
+app.use("/api/users", usersRoutes);
 
 //make mongoose connection
 await mongoose.connect(process.env.MONGO_URI);

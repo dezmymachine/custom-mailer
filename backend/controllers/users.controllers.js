@@ -15,16 +15,10 @@ export const logIn = async (req, res, next) => {
 
 //signup user
 export const SignUp = async (req, res, next) => {
-  const { firstName, lastName, username, email, password } = req.body;
+  const { fullName, email, password } = req.body;
   try {
-    const register = await User.signup(
-      firstName,
-      lastName,
-      email,
-      username,
-      password
-    );
-    res.status(201).json(register);
+    const register = await User.signup(email, fullName, password);
+    res.status(201).json("account created");
   } catch (error) {
     next(error);
   }
