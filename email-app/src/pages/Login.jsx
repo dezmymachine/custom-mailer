@@ -17,6 +17,7 @@ const Login = () => {
           <input
             aria-label="email address"
             placeholder="email address"
+            name="email"
             type="text"
             className="p-2 border rounded"
           />
@@ -26,6 +27,7 @@ const Login = () => {
           <input
             aria-label="password"
             placeholder="password"
+            name="password"
             type="password"
             className="p-2 border rounded"
           />

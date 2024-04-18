@@ -17,6 +17,7 @@ const SignUp = () => {
           <input
             aria-label="fullname"
             placeholder="Full name"
+            name="fullName"
             type="text"
             className="p-2 border rounded"
           />
@@ -26,6 +27,7 @@ const SignUp = () => {
           <input
             aria-label="email address"
             placeholder="email address"
+            name="email"
             type="text"
             className="p-2 border rounded"
           />
@@ -36,6 +38,7 @@ const SignUp = () => {
           <input
             aria-label="password"
             placeholder="password"
+            name="password"
             type="password"
             className="p-2 border rounded"
           />
