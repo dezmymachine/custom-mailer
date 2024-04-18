@@ -7,7 +7,7 @@ const messageSchema = new Schema({
   subject: { type: String, required: true },
   body: { type: String, required: true },
   date: { type: Date, required: true, default: Date.now },
-  read: { type: Boolean, required: true },
+  read: { type: Boolean, required: false },
 });
 
 export const Message = model("Message", messageSchema, "messages");

@@ -24,7 +24,7 @@ export const SignUp = async (req, res, next) => {
   }
 };
 
-//getusers
+//getusers (update to logout)
 export const getusers = async (req, res, next) => {
   try {
     const getResult = await User.find();
@@ -34,7 +34,7 @@ export const getusers = async (req, res, next) => {
   }
 };
 
-//getuser by id
+//getuser by id(update to getsingle user)
 export const getUserById = async (req, res, next) => {
   try {
     const findUderById = await User.findById(req.params.id);

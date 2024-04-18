@@ -24,7 +24,7 @@ export const addMessage = async (req, res, next) => {
       read,
     });
     //return response
-    res.status(201).json(createMsg);
+    res.status(201).json("message created successfully");
   } catch (error) {
     next(error);
   }
