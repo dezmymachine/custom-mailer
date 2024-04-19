@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,Types } from "mongoose";
 const tokenSchema = new Schema({
   userId: { type: Types.ObjectId, required: true },
   active: { type: Boolean, default: false },

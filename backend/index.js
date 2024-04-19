@@ -2,6 +2,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 //import routes
 import messagesRoutes from "./routes/messages.routes.js";
@@ -15,6 +16,7 @@ const app = express();
 //use middlewares
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 //use routes
 app.use("/api/messages", messagesRoutes);
