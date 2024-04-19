@@ -1,4 +1,11 @@
 import { User } from "../models/users.js";
+import { jwt } from "jsonwebtoken";
+
+//createToken
+const createToken = (_id) => {
+  return jwt.sign({ _id: _id }, process.env.SECRET, { expiresIn: "3d" });
+};
+
 //login user
 export const logIn = async (req, res, next) => {
   const { email, password } = req.body;
@@ -7,7 +14,7 @@ export const logIn = async (req, res, next) => {
       email,
       password,
     });
-    res.status(200).json(signIn);
+    res.status(200).json("logged in succesfully");
   } catch (error) {
     next(error);
   }
@@ -25,14 +32,7 @@ export const SignUp = async (req, res, next) => {
 };
 
 //getusers (update to logout)
-export const getusers = async (req, res, next) => {
-  try {
-    const getResult = await User.find();
-    res.status(200).json(getResult);
-  } catch (error) {
-    next(error);
-  }
-};
+export const logOut = async (req, res, next) => {};
 
 //getuser by id(update to getsingle user)
 export const getUserById = async (req, res, next) => {
