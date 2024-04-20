@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useFetch } from "../hooks/useFetch";
+import ErrorFetch from "../error/ErrorFetch";
+import Loader from "../loading/Loader";
 
 const Inbox = () => {
+  const baseUrl = import.meta.env.VITE_URL;
+  const { data, loading, error } = useFetch(`${baseUrl}/messages`);
+
+  if (error) return <ErrorFetch />;
+  if (loading) return <Loader />;
+
   return (
-    <div className="container">
-      <div className="mail content flex gap-2 p-3 shadow-sm items-center justify-evenly border">
-        <input type="checkbox" className="hidden sm:block" />
-        <p className="font-bold">John Doe</p>
-        <p>Hey what's up</p>
-        <p>This is the message...</p>
-        <p className="font-bold text-slate-600">8:02 AM</p>
-      </div>
-      <div className="mail content flex gap-2 p-3 shadow-sm items-center justify-evenly border">
-        <input type="checkbox" className="hidden sm:block" />
-        <p className="font-bold">John Doe</p>
-        <p>Hey what's up</p>
-        <p>This is the message...</p>
-        <p className="font-bold text-slate-600">8:02 AM</p>
-      </div>
+    <div className="container text-black">
+      {data &&
+        data.map((message) => (
+          <div key={message.id}>
+            <input type="checkbox" className="hidden sm:block" />
+            <p>{message.from}</p>
+            <p>{message.subject}</p>
+            <p>{message.body}</p>
+          </div>
+        ))}
     </div>
   );
 };
