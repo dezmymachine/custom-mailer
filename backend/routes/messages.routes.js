@@ -3,15 +3,16 @@ import {
   addMessage,
   getMessages,
 } from "../controllers/messages.controllers.js";
+import { userVerfication } from "../middlewares/AuthMiddleware.js";
 
 //create main router
 const router = Router();
 
 //create other routes
 
-router.post("/", addMessage);
+router.post("/", userVerfication, addMessage);
 
-router.get("/", getMessages);
+router.get("/", userVerfication, getMessages);
 
 //export router
 

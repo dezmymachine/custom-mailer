@@ -1,5 +1,8 @@
 import { User } from "../models/users.js";
-import { createSecretToken } from "../utils/SecretToken.js";
+import { createAccessToken } from "../utils/SecretToken.js";
+
+//directly use jwt
+import jwt from "jsonwebtoken";
 import bcrpt from "bcrypt";
 import { Token } from "../models/token.js";
 
@@ -12,13 +15,11 @@ export const SignUp = async (req, res, next) => {
       return res.json({ message: "User already exists" });
     }
     const user = await User.create({ email, password, fullName });
-    const token = createSecretToken(user._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-
-    res.status(201).json({ message: "User signed up successfully", user });
+    const token = createAccessToken(user._id);
+    // Save token to database
+    await Token.create({ userId: user._id });
+    // Return access token to user
+    res.status(201).json({ message: "User signed up successfully", token });
   } catch (error) {
     next(error);
   }
@@ -39,14 +40,11 @@ export const logIn = async (req, res, next) => {
     if (!auth) {
       return res.json({ message: "Incorrect email or password" });
     }
-    const token = createSecretToken(user._id);
-
-    //append this token to tokenModel
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res.status(201).json({ message: "User logged in successfully" });
+    const token = createAccessToken(user._id);
+    // Save token to database
+    await Token.create({ userId: user._id });
+    // Return access token to user
+    res.status(201).json({ message: "User logged in successfully", token });
   } catch (error) {
     next(error);
   }
@@ -63,18 +61,10 @@ export const logOut = async (req, res, next) => {
   }
 };
 
-//getuser by id(update to getsingle user)
-
-export const getMe=async(req,res,next)=>{
+//getuser
+export const getUser = async (req, res, next) => {
   try {
-    res.json(req.user)
-  } catch (error) {
-    next(error)
-  }
-}
-export const getUserById = async (req, res, next) => {
-  try {
-    const findUderById = await User.findById(req.params.id);
+    const findUderById = await User.findById(req.user.id);
     if (findUderById === null) {
       res.status(404).json({
         message: `User with ID:${req.params.id} not found`,

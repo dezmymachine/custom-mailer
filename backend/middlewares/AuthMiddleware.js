@@ -1,19 +1,17 @@
 import { User } from "../models/users.js";
 import jwt from "jsonwebtoken";
 
-export const userVerfication = (req, res) => {
-  const token = req.cookies.token;
+export const userVerfication = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1]; // Bearer token
   if (!token) {
-    return res.json({ status: false });
+    return res.status(401).json({ status: false, message: "" });
   }
   jwt.verify(token, process.env.SECRET, async (err, data) => {
     if (err) {
-      return res.json({ status: false });
+      return res.status(401).json({ status: false, message: err.message });
     } else {
-      const user = await User.findById(data.id);
-      if (user) {
-        return res.json({ status: true, user: user.fullName });
-      } else return res.json({ status: false });
+      req.user = data;
+      next();
     }
   });
 };

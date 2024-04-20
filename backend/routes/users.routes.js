@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   SignUp,
   logIn,
-  getMe,
+  getUser,
   logOut,
 } from "../controllers/users.controllers.js";
 import { userVerfication } from "../middlewares/AuthMiddleware.js";
@@ -13,9 +13,8 @@ const router = Router();
 //create other routes
 router.post("/register", SignUp);
 router.post("/login", logIn);
-router.post("/logout", logOut);
-router.post("/", userVerfication);
-router.get("/me", getMe);
+router.post("/logout", userVerfication, logOut);
+router.get("/me", userVerfication, getUser);
 
 //export router
 export default router;
