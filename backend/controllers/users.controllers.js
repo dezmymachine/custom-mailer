@@ -1,8 +1,5 @@
 import { User } from "../models/users.js";
 import { createAccessToken } from "../utils/SecretToken.js";
-
-//directly use jwt
-import jwt from "jsonwebtoken";
 import bcrpt from "bcrypt";
 import { Token } from "../models/token.js";
 
@@ -53,8 +50,8 @@ export const logIn = async (req, res, next) => {
 //getusers (update to logout)
 export const logOut = async (req, res, next) => {
   try {
-    //can apply UpdateMany to token model and set active to false
-    res.cookie("token", "", { expires: new Date(0), httpOnly: false });
+    //apply UpdateMany to token model and set active to false
+    await Token.updateMany({ userId: req.user._id }, { active: false });
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     next(error);

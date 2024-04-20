@@ -11,7 +11,6 @@ const router = Router();
 //create other routes
 
 router.post("/", userVerfication, addMessage);
-
 router.get("/", userVerfication, getMessages);
 
 //export router
