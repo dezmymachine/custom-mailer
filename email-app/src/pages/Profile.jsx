@@ -1,13 +1,15 @@
 import React from "react";
 
 const Profile = () => {
+  const userName = localStorage.getItem("fullName");
+  const email = localStorage.getItem("email");
   return (
-    <div className="p-3">
+    <div className="sm:p-3">
       <div>
-        <p>Username:</p>
-        <p>Logged in as:</p> <p className="font-semibold">ChatMail wadmin</p>
+        <p className="">Logged in as:</p>
+        <p>{userName}</p>
         <p>Email:</p>
-        <p className="font-semibold">chatmailwadmin@chat.com</p>
+        <p className="font-semibold text-primary">{email}</p>
       </div>
     </div>
   );

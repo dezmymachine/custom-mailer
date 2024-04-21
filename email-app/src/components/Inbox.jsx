@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
+// import { useFetch } from "../hooks/useFetch";
 import ErrorFetch from "../error/ErrorFetch";
 import Loader from "../loading/Loader";
 
 const Inbox = () => {
   const baseUrl = import.meta.env.VITE_URL;
-  const { data, loading, error } = useFetch(`${baseUrl}/messages`);
+  // const { data, loading, error } = useFetch(`${baseUrl}/messages`);
 
-  if (error) return <ErrorFetch />;
-  if (loading) return <Loader />;
+  // if (error) return <ErrorFetch />;
+  // if (loading) return <Loader />;
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`${baseUrl}/messages`, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "your-api-key",
+        "X-RapidAPI-Host": "jokes-by-api-ninjas.p.rapidapi.com",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setJoke(data[0].joke);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className="container text-black">
