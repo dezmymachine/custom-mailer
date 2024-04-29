@@ -29,10 +29,13 @@ const SignUp = () => {
       },
     });
 
-    if (response.status === 200) {
+    if (response.status === 201) {
+      const data = await response.json();
+      console.log({ data });
+      localStorage.setItem("loggedtoken", data.token);
       localStorage.setItem("fullName", fullName);
       localStorage.setItem("email", email);
-      navigate("/login");
+      navigate("/home");
     } else {
       setLoading(false);
     }

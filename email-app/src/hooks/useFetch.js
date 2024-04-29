@@ -8,7 +8,11 @@ export const useFetch = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("loggedtoken")}`,
+          },
+        });
         if (!response.ok) {
           throw new Error("Could not fetch data");
         }

@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import ComposeEmail from "./components/ComposeEmail";
 import Profile from "./pages/Profile";
+import InboxDetails from "./components/InboxDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         path: "/home/inbox",
         element: <Inbox />,
       },
+      {
+        path: "/home/inbox/:id",
+        element: <InboxDetails />,
+      },
+
       {
         path: "/home/sent",
         element: <Sent />,

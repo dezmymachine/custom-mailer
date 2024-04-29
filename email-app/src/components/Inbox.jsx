@@ -1,44 +1,36 @@
 import React, { useState, useEffect } from "react";
-// import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import ErrorFetch from "../error/ErrorFetch";
 import Loader from "../loading/Loader";
+import { Link } from "react-router-dom";
 
 const Inbox = () => {
   const baseUrl = import.meta.env.VITE_URL;
-  // const { data, loading, error } = useFetch(`${baseUrl}/messages`);
+  const { data, loading, error } = useFetch(`${baseUrl}/messages`);
 
-  // if (error) return <ErrorFetch />;
-  // if (loading) return <Loader />;
-
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(`${baseUrl}/messages`, {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "your-api-key",
-        "X-RapidAPI-Host": "jokes-by-api-ninjas.p.rapidapi.com",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setJoke(data[0].joke);
-        console.log(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  if (error) return <ErrorFetch />;
+  if (loading) return <Loader />;
 
   return (
-    <div className="container text-black">
+    <div className="container text-black flex flex-col gap-1">
       {data &&
         data.map((message) => (
-          <div key={message.id}>
-            <input type="checkbox" className="hidden sm:block" />
-            <p>{message.from}</p>
-            <p>{message.subject}</p>
-            <p>{message.body}</p>
+          <div
+            key={message._id}
+            className="flex border p-3 items-center gap-2 justify-between"
+            style={{ maxWidth: "800px" }}
+          >
+            <Link to={`/home/inbox/${message._id}`}>
+              <p className="font-semibold text-primary">{message.from}</p>
+            </Link>
+            <p className="font-semibold text-slate-500">{message.subject}</p>
+            <p className="text-slate-900">{message.body}</p>
+            <p className="text-slate-900 font-semibold">
+              {new Date(message.date).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </p>
           </div>
         ))}
     </div>

@@ -27,6 +27,8 @@ const Login = () => {
     });
 
     if (response.status === 200) {
+      const data = await response.json();
+      localStorage.setItem("loggedtoken", data.token);
       navigate("/home");
     } else {
       setLoading(false);

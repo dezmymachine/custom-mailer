@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   addMessage,
   getMessages,
+  getOneMessage,
 } from "../controllers/messages.controllers.js";
 import { userVerfication } from "../middlewares/AuthMiddleware.js";
 
@@ -12,6 +13,7 @@ const router = Router();
 
 router.post("/", userVerfication, addMessage);
 router.get("/", userVerfication, getMessages);
+router.get("/:id", userVerfication, getOneMessage);
 
 //export router
 

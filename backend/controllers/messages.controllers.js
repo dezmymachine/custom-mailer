@@ -29,3 +29,14 @@ export const addMessage = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getOneMessage = async (req, res, next) => {
+  try {
+    //get message id
+    const getMessageID = await Message.findById(req.params.id);
+    //return response
+    res.status(200).json(getMessageID);
+  } catch (error) {
+    next(error);
+  }
+};

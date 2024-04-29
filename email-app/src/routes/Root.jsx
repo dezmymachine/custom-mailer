@@ -5,6 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import inbox from "../assets/inboxe.svg";
 import sent from "../assets/sentmail.svg";
 import compose from "../assets/write.svg";
+import InboxDetails from "../components/InboxDetails";
 
 const Root = () => {
   return (
